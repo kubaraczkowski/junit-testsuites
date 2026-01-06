@@ -1,4 +1,4 @@
-module github.com/opendevstack/junit-testsuites
+module github.com/kubaraczkowski/junit-testsuites
 
 go 1.21.0
 
