@@ -12,10 +12,11 @@ import (
 )
 
 type Options struct {
-	FilesGlob  string
-	Name       string
-	KeepStdout bool
-	KeepStderr bool
+	FilesGlob      string
+	Name           string
+	KeepStdout     bool
+	KeepStderr     bool
+	AppendFilename bool
 }
 
 // CombineTestsuites combines the Junit XML files given through opts
@@ -50,6 +51,10 @@ func CombineTestsuites(w io.Writer, opts Options) error {
 		}
 		if !opts.KeepStderr {
 			ts.SystemErr.Data = ""
+		}
+
+		if opts.AppendFilename {
+			ts.Name = fmt.Sprintf("%s (%s)", ts.Name, filepath.Base(m))
 		}
 
 		suites.AddSuite(ts)

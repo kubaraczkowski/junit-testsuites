@@ -30,15 +30,17 @@ func main() {
 	}
 
 	opts := combine.Options{
-		FilesGlob:  "*.xml",
-		Name:       "combined",
-		KeepStdout: false,
-		KeepStderr: false,
+		FilesGlob:      "*.xml",
+		Name:           "combined",
+		KeepStdout:     false,
+		KeepStderr:     false,
+		AppendFilename: false,
 	}
 	flag.StringVar(&opts.FilesGlob, "files", opts.FilesGlob, "Glob pattern of JUnit XML files. Preferrably specified as an argument.")
 	flag.StringVar(&opts.Name, "name", opts.Name, "Name of combined testsuites")
 	flag.BoolVar(&opts.KeepStdout, "keep-stdout", opts.KeepStdout, "Whether to keep STDOUT of tests")
 	flag.BoolVar(&opts.KeepStderr, "keep-stderr", opts.KeepStderr, "Whether to keep STDERR of tests")
+	flag.BoolVar(&opts.AppendFilename, "append-filename", opts.AppendFilename, "Whether to append the filename to the test suite name")
 
 	outFlag := flag.String("out", "", "Output filename. When unset, output is written to STDOUT")
 	flag.Parse()
