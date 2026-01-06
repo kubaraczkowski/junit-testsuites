@@ -17,7 +17,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/opendevstack/junit-testsuites/combine"
+	"github.com/kubaraczkowski/junit-testsuites/combine"
 )
 
 var nonAlphanumericRegex = regexp.MustCompile(`[^a-zA-Z0-9]+`)
