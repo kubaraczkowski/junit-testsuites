@@ -54,7 +54,10 @@ func CombineTestsuites(w io.Writer, opts Options) error {
 		}
 
 		if opts.AppendFilename {
-			ts.Name = fmt.Sprintf("%s (%s)", ts.Name, filepath.Base(m))
+			for i := range ts.Testcases {
+				tc := &ts.Testcases[i]
+				tc.Classname = fmt.Sprintf("%s (%s)", tc.Classname, filepath.Base(m))
+			}
 		}
 
 		suites.AddSuite(ts)
